@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1>GET Catalan</h1>
+    <form action="/catalan">
+        <label for="name">Number:</label><br>
+        <input type="text" id="number" name="number"><br><br>
+        <input type="button" value="Submit" onclick="loadCatalan()">
+    </form>
+    <div id="getrespmsg"></div>
+    <script>
+        function loadCatalan() {
+            let nameVar = document.getElementById("number").value;
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.getElementById("getrespmsg").innerHTML =
+                    this.responseText;
+            }
+            xhttp.open("GET", "/catalan?value=" + nameVar);
+            xhttp.send();
+        }
+    </script>
+
+</body>
+
+</html>
